@@ -11,7 +11,18 @@ module HumbleRubyist
 
       def call(env)
         post_storage = HumbleRubyist::PostStorage.new(config.posts_path)
-        [200, { "Content-Type" => "text/html" }, post_storage.posts.map(&:render)]
+        [200, { "Content-Type" => "text/html" }, [<<HTML]]
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    #{post_storage.posts.map(&:render).join("\n")}
+  </body>
+</html>
+HTML
       end
 
       def configure
