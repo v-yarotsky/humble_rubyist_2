@@ -1,33 +1,38 @@
 require "humble_rubyist/config"
 require "humble_rubyist/post_storage"
+require "humble_rubyist/template_storage"
+require "humble_rubyist/view"
 
 module HumbleRubyist
 
   class Application
-    @config = HumbleRubyist::Config.new
+    include Singleton
 
-    class << self
-      attr_reader :config
+    attr_reader :config
 
-      def call(env)
-        post_storage = HumbleRubyist::PostStorage.new(config.posts_path)
-        [200, { "Content-Type" => "text/html" }, [<<HTML]]
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link href="/css/syntax.css" rel="stylesheet">
-  </head>
-  <body>
-    #{post_storage.posts.map(&:render).join("\n")}
-  </body>
-</html>
-HTML
-      end
+    def initialize
+      @config = HumbleRubyist::Config.new
+    end
 
-      def configure
-        yield @config
-      end
+    def configure
+      yield @config
+    end
+
+    def call(env)
+      template = template_storage.retrieve_template("posts")
+      posts = post_storage.posts
+      rendered_template = HumbleRubyist::View.new(template, posts: posts).render
+      [200, { "Content-Type" => "text/html" }, [rendered_template]]
+    end
+
+    private
+
+    def template_storage
+      @template_storage ||= HumbleRubyist::TemplateStorage.new(config.templates_path)
+    end
+
+    def post_storage
+      @post_storage ||= HumbleRubyist::PostStorage.new(config.posts_path)
     end
   end
 

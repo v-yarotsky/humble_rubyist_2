@@ -5,7 +5,7 @@ module HumbleRubyist
 
   class TestApplication < HRTest
     def setup
-      @app = HumbleRubyist::Application
+      @app = HumbleRubyist::Application.instance
     end
 
     def test_has_config
@@ -20,6 +20,10 @@ module HumbleRubyist
         yielded_cfg = config
       end
       assert_same cfg, yielded_cfg
+    end
+
+    def test_renders_posts
+      skip
     end
   end
 

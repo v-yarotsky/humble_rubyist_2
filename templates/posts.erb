@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="/css/syntax.css" rel="stylesheet">
+  </head>
+  <body>
+    <% @posts.each do |post| %>
+    <%= post.render %>
+    <% end %>
+  </body>
+</html>
+
