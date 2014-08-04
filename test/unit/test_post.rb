@@ -39,35 +39,35 @@ Rest of the post
 POST
     end
 
-    def test_has_date
+    test "has date" do
       assert_equal Date.parse("20140127"), @post.date
     end
 
-    def test_has_slug
+    test "has slug" do
       assert_equal "test-post", @post.slug
     end
 
-    def test_has_category
+    test "has category" do
       assert_equal "ruby", @post.category
     end
 
-    def test_does_not_parse_metadata_mid_post
+    test "does not parse metadata mid post" do
       refute_equal "faux", @post.category
     end
 
-    def test_has_tags
+    test "has tags" do
       assert_equal ["anything", "anywhere"], @post.tags
     end
 
-    def test_has_title
+    test "has title" do
       assert_equal "Ohai.\n  Doing things here", @post.title
     end
 
-    def test_has_teaser
+    test "has teaser" do
       assert_equal "The post begins here", @post.teaser
     end
 
-    def test_has_content
+    test "has content" do
       assert_equal <<POST.strip, @post.content
 The post continues here
 
@@ -88,10 +88,10 @@ Rest of the post
 ```
 POST
     end
-  end
 
-  def test_renders_nice_html
-    skip "Parse output with nokogiri and check it"
+    test "renders nice html" do
+      skip "Parse output with nokogiri and check it"
+    end
   end
 
 end

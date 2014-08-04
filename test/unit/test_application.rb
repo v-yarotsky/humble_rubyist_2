@@ -8,12 +8,12 @@ module HumbleRubyist
       @app = HumbleRubyist::Application.instance
     end
 
-    def test_has_config
+    test "has config" do
       cfg = @app.config
       refute_nil cfg
     end
 
-    def test_configure_yields_config
+    test "configure yields config" do
       cfg = @app.config
       yielded_cfg = nil
       @app.configure do |config|
@@ -22,7 +22,7 @@ module HumbleRubyist
       assert_same cfg, yielded_cfg
     end
 
-    def test_renders_posts
+    test "renders posts" do
       skip
     end
   end

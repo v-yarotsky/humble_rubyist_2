@@ -8,7 +8,7 @@ module HumbleRubyist
       @template_storage = HumbleRubyist::TemplateStorage.new("test/fixtures/templates")
     end
 
-    def test_retrieve_template
+    test "retrieve template" do
       template = @template_storage.retrieve_template("demo")
       assert_equal "Demo Template Contents\n", template
     end

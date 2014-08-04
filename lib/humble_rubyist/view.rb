@@ -3,7 +3,7 @@ require "erb"
 module HumbleRubyist
 
   class View
-    def initialize(template_content, template_values)
+    def initialize(template_content, template_values = {})
       @_template_content, @_template_values = template_content, template_values
     end
 
