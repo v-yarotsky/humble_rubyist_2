@@ -19,10 +19,24 @@ module HumbleRubyist
     end
 
     def call(env)
-      template = template_storage.retrieve_template("posts")
-      posts = post_storage.posts
-      rendered_template = HumbleRubyist::View.new(template, posts: posts).render
-      [200, { "Content-Type" => "text/html" }, [rendered_template]]
+      case [env["PATH_INFO"], env["REMOTE_ADDR"]]
+      when ["/styleguide", "127.0.0.1"]
+        require "kss"
+        require "humble_rubyist/styleguide"
+        styleguide_template = template_storage.retrieve_template("styleguide")
+        styleguide_example_template = template_storage.retrieve_template("_styleguide_example")
+        styleguide = Kss::Parser.new("public/css/style.css")
+        rendered_template = HumbleRubyist::Styleguide.new(styleguide_template,
+                                                          styleguide_example_template,
+                                                          styleguide).render
+
+        [200, { "Content-Type" => "text/html" }, [rendered_template]]
+      else
+        template = template_storage.retrieve_template("posts")
+        posts = post_storage.posts
+        rendered_template = HumbleRubyist::View.new(template, posts: posts).render
+        [200, { "Content-Type" => "text/html" }, [rendered_template]]
+      end
     end
 
     private

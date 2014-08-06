@@ -2,12 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="/css/vendor/normalize.css" rel="stylesheet">
     <link href="/css/syntax.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
   </head>
   <body>
-    <% @posts.each do |post| %>
-    <%= post.render %>
-    <% end %>
+    <div class="l-site">
+      <div class="site">
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-list-item"><a class="nav-list-item-link" href="/">Home</a></li>
+            <li class="nav-list-item"><a class="nav-list-item-link" href="https://github.com/v-yarotsky">Me on Github</a></li>
+            <li class="nav-list-item"><a class="nav-list-item-link" href="#">Résumé</a></li>
+          </ul>
+        </nav>
+        <div class="header">
+          <a href="/">
+            <img alt="Humble Rubyist" class="header-avatar" src="http://www.gravatar.com/avatar/4fbcc6dafbf12135c54172d881f6e74a.png?s=64">
+          </a>
+          <h1>
+            <a href="#" class="header-link">Humble Rubyist</a>
+          </h1>
+        </div>
+        <% @posts.each do |post| %>
+        <%= post.render %>
+        <% end %>
+      <div><!-- .site -->
+    <div><!-- .l-site -->
   </body>
 </html>
 

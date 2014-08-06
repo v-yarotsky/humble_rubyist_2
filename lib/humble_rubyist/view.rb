@@ -12,6 +12,16 @@ module HumbleRubyist
       ERB.new(@_template_content, 0, "%<>-", "@_result").result(binding)
       @_result
     end
+
+    private
+
+    def capture(&block)
+      out, @_result = @_result, ""
+      block.call
+      @_result
+    ensure
+      @_result = out
+    end
   end
 
 end

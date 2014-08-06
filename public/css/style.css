@@ -1,0 +1,170 @@
+/****************************
+
+  ### Table of Contents ###
+
+    Base
+    Layout
+    Modules
+    State
+    Theme
+
+****************************/
+
+
+
+
+
+/***************
+
+  ### Base ###
+
+***************/
+
+body {
+  background: url('/images/bg-texture.png') #373738;
+  font: 13.34px Helvetica, Arial, sans-serif;
+}
+
+/*
+
+  Base link styles
+
+  :hover    - Highlights when hovering
+  :visited  - Dims already visited links
+
+  Styleguide Base.Links
+
+*/
+
+a         { color: #00a; }
+a:hover   { color: #000; }
+a:visited { color: #a0a; }
+
+
+
+
+
+/*****************
+
+  ### Layout ###
+
+*****************/
+
+.l-site {
+  width: 740px;
+  margin: 20px auto 40px;
+}
+
+
+
+
+
+/******************
+
+  ### Modules ###
+
+******************/
+
+/*
+
+Main site block
+
+No styleguide reference
+
+*/
+
+.site {
+  text-align: justify;
+  line-height: 1.5em;
+  padding: 20px 60px;
+  background: #fff;
+  outline: 10px solid rgba(102, 99, 99, 0.55);
+  box-shadow: 0 10px 70px #222;
+}
+
+/*
+
+  Main header
+
+  Styleguide Modules.Header
+
+*/
+
+.header {
+  text-align: center;
+  padding: 20px 0 0;
+  margin: 5px 0 20px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-avatar {
+  margin-bottom: 10px;
+  vertical-align: baseline;
+  max-width: 600px;
+}
+
+.header > h1 {
+  margin: 0 0 20px;
+}
+
+.header-link {
+  color: #000;
+  font: 50px/1 Georgia, serif;
+  font-weight: normal;
+  text-decoration: none;
+  text-shadow: 0 1px 1px #555;
+}
+
+.header-link:hover {
+  color: #A33446;
+}
+
+/*
+
+Main site navigation menu
+
+Styleguide Modules.Navigation.Main
+
+*/
+
+.nav {
+  padding: 20px 0;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-list-item {
+  float: left;
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  border-right: 1px dotted #ddd;
+}
+
+.nav-list-item:last-child {
+  border-right: 0 none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.nav-list-item-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #555;
+  font-size: 12px;
+}
+
+.nav-list-item-link:visited {
+  color: #555;
+}
+
+.nav-list-item-link:hover,
+.nav-list-item-link:focus,
+.nav-list-item-link:active {
+  color: #000;
+  text-decoration: underline;
+}
+
